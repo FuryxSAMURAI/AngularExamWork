@@ -1,0 +1,44 @@
+<!-- <p>all-products works!</p> -->
+
+<main class="container xs-block d-xs-block d-sm-block d-md-flex d-lg-flex justify-content-center mt-5">     
+        <div class="d-xs-block d-sm-block d-md-flex d-lg-flex justify-content-start w-100">
+            <div class="my-2 w-100">
+                <label for="" class="my-1"> ФІЛЬТР: </label>
+                <select class="form-control mt-2"  
+                    [(ngModel)]="selectedFilter" 
+                    (change)="filterItems()"
+                    (change)="onFilterChanged()">
+                        <option value="all"> Всі товари </option>             
+                        <option value="categoria"> Категорія </option>
+                        <option value="title"> Назва </option>
+                        <option value="price"> Ціна </option>
+                </select>
+                <input type="text" 
+                        [(ngModel)]="filterText" 
+                        (input)="filterItems()"              
+                        placeholder="Пошук товарів"
+                        class="form-control mt-2">
+            </div>
+        </div>
+        <!-- <div class=""> -->
+                <!-- CARDS -->
+                <div class="row xs-blocks d-sm-flex justify-content-start d-md-flex d-lg-flex justify-md-end">
+                    <div class="" style="width: 250px;" 
+                            *ngFor="let item of filteredItems,
+                            let card of filteredItems; 
+                            let productId = index"
+                            >
+                        <app-product 
+                            [data]="item" 
+                            (item)="addToCart($event)"> 
+                        </app-product> 
+                    </div>
+                </div>
+        <!-- </div>   -->
+</main>
+
+
+
+
+
+

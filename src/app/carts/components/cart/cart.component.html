@@ -1,0 +1,68 @@
+<!-- <p>cart works!</p> -->
+<div class="cartBox container">
+    
+    <h1 class="text-danger"> Корзина </h1>
+    <!-- <p class="cartBox_p">{{ cartProducts.length }} </p> -->
+    <div class="headCart">
+        <p class="lead"> Ви маєте 
+            <label class="text-danger"> {{ cartProducts.length }} </label> 
+            покупки у вашій корзині 
+        </p>
+        
+        <span class="text-danger cad-header" (click)="clearCart()"> Очистити корзину </span>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr class="d-sm-title">
+                <th></th>
+                <th> Назва </th>
+                <th> Ціна </th>
+                <th style="width: 25%;"> Кількість </th>
+                <th> Всього </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of cartProducts; let index = index">
+                    <td><img src="{{item.image}}" alt=""></td>
+                    <td> {{item.title}} </td>
+                    <td> {{item.price}} ₴</td>
+                    <td>
+                        <div class="quantity">
+                        <button class="btn btn-dark" (click)="addAmount(index)"> + </button>
+                        <input type="number" class="form-control" style="width: 50px;text-align: center;"
+                        (change)="detectChange()"
+                        [value]="1"
+                        min="0" max="100" 
+                            [(ngModel)]="item.quantity" 
+                        >
+                        
+                        <button class="btn btn-dark" (click)="minsAmount(index)"> - </button> 
+                        </div>
+                    </td>
+                    <td> {{ item.price * item.quantity}} ₴ </td>                
+                    <td>
+                        <button class="btn btn-danger" (click)="deleteProduct(index)"> Видалити </button>
+                    </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th> Total : {{ total }} ₴ </th>
+                <th>
+                    <button class="btn btn-success" (click)="clearCart()"> Зробити заказ </button>
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+
+</div>
+
+
+
+
