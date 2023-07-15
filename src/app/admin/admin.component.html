@@ -1,5 +1,5 @@
 <!-- <p>admin works!</p> -->
-<div class="container d-flex d-767-block">
+<div class="container d-flex d-767-block xs-block">
     <div class="d-flex mt-5 h-50 justify-content-center">
         <form class="form">
             <p class="text-center" style="font-size: 26px;">Форма для заповнення</p>
@@ -41,7 +41,7 @@
         </form>
     </div>
     <div class="mx-3 mt-5 row d-flex j-767-center">
-        <div class="mb-3" style="font-size: 26px;">Доступні товари :</div>
+        <div class="mb-3" style="font-size: 26px;">Доступні / Додані товари :</div>
         <div class="item" *ngFor="let product of availableProducts let id = index">
             <img src="{{product.image}}" style="height: 100px;width: auto;">
             <p style="text-align: center; font-size: 14px; width: 100%; height: 50px;padding-top: 10px;">{{product.title}}</p>

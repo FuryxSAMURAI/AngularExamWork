@@ -20,6 +20,7 @@ export class AdminComponent {
 
   deleteProduct(id: number) {
     this.productsService.deleteProduct(id);
+    localStorage.setItem('phonesFromAdmin', JSON.stringify(this.productsService.getAllProducts()))
   }
 
   getDataFromLocalStorage(key: string): any {

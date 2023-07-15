@@ -23,6 +23,11 @@ export class AllProductsComponent implements OnInit{
 
 
     ngOnInit(): void {      
+      // if (localStorage.getItem('phonesFromAdmin') === null) {
+      //   this.productService.getProducts()
+      // }else{
+      //   return this.products
+      // }
       this.products = this.productService.getProducts(); 
       this.restoreFilterText();
       this.filterItems();  
