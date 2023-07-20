@@ -1,20 +1,13 @@
 <!-- <p>cart works!</p> -->
-<div class="cartBox container">
-    
-    <h1 class="text-danger"> Корзина </h1>
-    <!-- <p class="cartBox_p">{{ cartProducts.length }} </p> -->
+<div class="cartBox">
+    <h1 class="text-danger"> Кошик </h1>
     <div class="headCart">
-        <p class="lead"> Ви маєте 
-            <label class="text-danger"> {{ cartProducts.length }} </label> 
-            покупки у вашій корзині 
-        </p>
-        
+        <p class="lead"> Ви маєте <label class="text-danger"> {{ cartProducts.length }} </label> покупки у вашій корзині</p>
         <span class="text-danger cad-header" (click)="clearCart()"> Очистити корзину </span>
     </div>
-
     <table class="table table-striped">
         <thead>
-            <tr class="d-sm-title">
+            <tr>
                 <th></th>
                 <th> Назва </th>
                 <th> Ціна </th>
@@ -24,27 +17,28 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of cartProducts; let index = index">
-                    <td><img src="{{item.image}}" alt=""></td>
-                    <td> {{item.title}} </td>
-                    <td> {{item.price}} ₴</td>
-                    <td>
-                        <div class="quantity">
-                        <button class="btn btn-dark" (click)="addAmount(index)"> + </button>
-                        <input type="number" class="form-control" style="width: 50px;text-align: center;"
+            <tr *ngFor="let cartProduct of cartProducts; let i = index">
+                <td><img src="{{cartProduct.image}}" alt=""></td>
+                <td> {{cartProduct.title}} </td>
+                <td> {{cartProduct.price}} ₴</td>
+                <td>
+                    <div class="quantity">
+                        <button class="btn btn-dark" (click)="addAmount(i)"> + </button>
+                        <!-- <input type="number" class="form-control"
                         (change)="detectChange()"
-                        [value]="1"
+                        [(ngModel)]="value"
+                        [(ngModel)]="cartProduct.quantity"
                         min="0" max="100" 
-                            [(ngModel)]="item.quantity" 
-                        >
-                        
-                        <button class="btn btn-dark" (click)="minsAmount(index)"> - </button> 
-                        </div>
-                    </td>
-                    <td> {{ item.price * item.quantity}} ₴ </td>                
-                    <td>
-                        <button class="btn btn-danger" (click)="deleteProduct(index)"> Видалити </button>
-                    </td>
+                        > -->
+                        {{count}}
+                        <button class="btn btn-dark" (click)="minsAmount(i)"> - </button> 
+                    </div>
+                </td>
+                <td> {{ cartProduct.price * cartProduct.quantity}} ₴ </td>
+                <!-- <td> {{ item.price * item.itemCount}} </td> -->
+                <td>
+                    <button class="btn btn-danger" (click)="deleteProduct(i)"> Видалити </button>
+                </td>
             </tr>
         </tbody>
         <tfoot>
@@ -55,14 +49,18 @@
                 <th></th>
                 <th> Total : {{ total }} ₴ </th>
                 <th>
-                    <button class="btn btn-success" (click)="clearCart()"> Зробити заказ </button>
+                    <button class="btn btn-success" (click)="clearCart()"> Order Now </button>
                 </th>
             </tr>
         </tfoot>
     </table>
 
 </div>
+<!-- [(ngModel)]="item.quantity"  -->
 
 
+<!-- <div *ngIf="isSend" class="alert alert-success" role="alert">
+    <strong> Well Done!!!</strong> Your order is Successfully Send
+</div>  -->
 
 

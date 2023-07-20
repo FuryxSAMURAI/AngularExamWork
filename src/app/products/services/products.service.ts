@@ -6,15 +6,13 @@ import { EventEmitter, Injectable } from '@angular/core';
 })
 export class ProductsService {
   private products: any[] = [  
-    // {quantity: '1'},
     {
         id: 1,
         categoria: 'cellphone',
         image: 'assets/POCO_F5.jpg',
         title: 'POCO F5 Pro 8/256 Black',
         price: 22999,
-        quantity: 1,
-        description: 'Renders of the 6.7-inch iPhone 15 Plus suggest that it will feature some minor design updates compared to the iPhone 14 Plus, including the Dynamic Island, slimmer bezels, and slight tweaks to the size and thickness of the device. '
+        description: 'Poco F5 обладает элегантным дизайном с изогнутыми краями экрана, которые добавляют красоты и уникальности устройству. Этот смартфон предлагает потрясающее визуальное впечатление благодаря своему стильному и современному внешнему виду.'
       },
       {
         id: 2,
@@ -22,8 +20,7 @@ export class ProductsService {
         image: 'assets/Samsung_UE43CU7100UXUA.jpg',
         title: 'Телевізор Samsung UE43CU7100UXUA',
         price: 17499,
-        quantity: 1,
-        description: 'Renders of the 6.7-inch iPhone 15 Plus suggest that it will feature some minor design updates compared to the iPhone 14 Plus, including the Dynamic Island, slimmer bezels, and slight tweaks to the size and thickness of the device. '
+        description: 'Телевизор Samsung UE43CU7100UXUA обладает стильным дизайном и привлекательным внешним видом. Устройство имеет компактный размер с экраном, диагональю 43 дюйма, который обеспечивает яркое и четкое изображение с высокой детализацией. Он предлагает потрясающий визуальный опыт и широкие углы обзора, позволяющие наслаждаться любимыми фильмами и программами с комфортом.'
       },
       {
         id: 3,
@@ -31,16 +28,14 @@ export class ProductsService {
         image: 'assets/Lenovo_IdeaPad_Gaming3_15ACH6).jpg',
         title: 'Ноутбук Lenovo IdeaPad Gaming 3 15ACH6',
         price: 33999,
-        quantity: 1,
-        description: 'Renders of the 6.7-inch iPhone 15 Plus suggest that it will feature some minor design updates compared to the iPhone 14 Plus, including the Dynamic Island, slimmer bezels, and slight tweaks to the size and thickness of the device. '
+        description: 'Ноутбук Lenovo IdeaPad Gaming 3 15ACH6 — стильное и мощное игровое устройство с 15.6-дюймовым экраном. Он обеспечивает яркие цвета и высокую четкость изображения. Благодаря мощному процессору и графической карте, этот ноутбук идеально подходит для игр и многозадачных задач.'
       },
       {
         id: 4,
         categoria: 'laptop',
         image: 'assets/Ігровий_монітор вигнутий_VA27.jpg',
-        title: 'Ігровий монітор 27" Samsung LC27G55TQBIXCI',
+        title: 'Ігровий монітор вигнутий VA 27" Samsung LC27G55TQBIXCI',
         price: 9999,
-        quantity: 1,
         description: 'Renders of the 6.7-inch iPhone 15 Plus suggest that it will feature some minor design updates compared to the iPhone 14 Plus, including the Dynamic Island, slimmer bezels, and slight tweaks to the size and thickness of the device. '
       },
       {
@@ -49,7 +44,6 @@ export class ProductsService {
         image: 'assets/Apple_MacBook_Air_M2_Chip13_8256GB.jpg',
         title: 'Apple MacBook Air M2 Chip 13" 8/256GB',
         price: 57499,
-        quantity: 1,
         description: 'Renders of the 6.7-inch iPhone 15 Plus suggest that it will feature some minor design updates compared to the iPhone 14 Plus, including the Dynamic Island, slimmer bezels, and slight tweaks to the size and thickness of the device. '
       },
       {
@@ -58,16 +52,14 @@ export class ProductsService {
         image: 'assets/realme_GT_Neo_350W 12256GB.jpg',
         title: 'realme GT Neo 3 150W 12/256GB',
         price: 16999,
-        quantity: 1,
         description: 'Renders of the 6.7-inch iPhone 15 Plus suggest that it will feature some minor design updates compared to the iPhone 14 Plus, including the Dynamic Island, slimmer bezels, and slight tweaks to the size and thickness of the device. '
       },
       {
         id: 7,
         categoria: 'laptop',
         image: 'assets/Ноутбук_ASUS_ROG_Strix_Scar_18.png',
-        title: 'ASUS ROG Strix Scar 18',
+        title: 'Ноутбук ASUS ROG Strix Scar 18',
         price: 183027,
-        quantity: 1,
         description: 'Renders of the 6.7-inch iPhone 15 Plus suggest that it will feature some minor design updates compared to the iPhone 14 Plus, including the Dynamic Island, slimmer bezels, and slight tweaks to the size and thickness of the device. '
       },
       {
@@ -76,16 +68,14 @@ export class ProductsService {
         image: 'assets/Samsung_Galaxy_S21_FE_G990B_8256GB.jpg',
         title: 'Samsung Galaxy S21 FE G990B 8/256GB',
         price: 23399,
-        quantity: 1,
         description: 'Renders of the 6.7-inch iPhone 15 Plus suggest that it will feature some minor design updates compared to the iPhone 14 Plus, including the Dynamic Island, slimmer bezels, and slight tweaks to the size and thickness of the device. '
       },
       {
         id: 9,
         categoria: 'laptop',
         image: 'assets/lenovoLegion.jpg',
-        title: 'Lenovo Legion 5 15ITH6',
+        title: 'Ноутбук Lenovo Legion 5 15ITH6',
         price: 37380,
-        quantity: 1,
         description: 'Renders of the 6.7-inch iPhone 15 Plus suggest that it will feature some minor design updates compared to the iPhone 14 Plus, including the Dynamic Island, slimmer bezels, and slight tweaks to the size and thickness of the device. '
       },
       {
@@ -94,7 +84,6 @@ export class ProductsService {
         image: 'assets/Iphone14Pro-Max.jpg',
         title: 'Apple iPhone 14 Pro Max 128Gb',
         price: 54999,
-        quantity: 1,
         description: 'Renders of the 6.7-inch iPhone 15 Plus suggest that it will feature some minor design updates compared to the iPhone 14 Plus, including the Dynamic Island, slimmer bezels, and slight tweaks to the size and thickness of the device. '
       },
       {
@@ -103,16 +92,14 @@ export class ProductsService {
         image: 'assets/Xiaomi_Redmi_Note12_4128GB.jpg',
         title: 'Xiaomi Redmi Note 12 4/128GB',
         price: 7999,
-        quantity: 1,
         description: 'Renders of the 6.7-inch iPhone 15 Plus suggest that it will feature some minor design updates compared to the iPhone 14 Plus, including the Dynamic Island, slimmer bezels, and slight tweaks to the size and thickness of the device. '
       },
       {
         id: 12,
         categoria: 'iPad',
         image: 'assets/Apple_iPad9i.jpg',
-        title: 'Apple iPad 9 Wi-Fi 64GB Space Gray',
+        title: 'Xiaomi Redmi Note 12 4/128GB',
         price: 13999,
-        quantity: 1,
         description: 'Renders of the 6.7-inch iPhone 15 Plus suggest that it will feature some minor design updates compared to the iPhone 14 Plus, including the Dynamic Island, slimmer bezels, and slight tweaks to the size and thickness of the device. '
       },
       {
@@ -121,7 +108,6 @@ export class ProductsService {
       image: 'assets/apple12.jpg',
       title: 'iPhone 11 Pro Max',
       price: 21200,
-      quantity: 1,
       description: 'iPhone 11 Pro: the most powerful and advanced smartphone'
     },
     {
@@ -130,7 +116,6 @@ export class ProductsService {
       image: 'assets/iphone12pro.jpg',
       title: 'iPhone 12 Pro Max',
       price: 23300,
-      quantity: 1,
       description: 'Big is beautiful, they say. So, is the new iPhone 12 Pro Max, the biggest phone Apple has ever built, a giant beauty or an over-sized monster?'
     },
     {
@@ -139,7 +124,6 @@ export class ProductsService {
       image: 'assets/iphone13pro.jpg',
       title: 'iPhone 13 Pro',
       price: 31499,
-      quantity: 1,
       description: 'Iphone can be endowed with the fastest processor in the world, but if it’s saddled with a slow screen, it could still feel sluggish — especially when compared to a similarly equipped device with a faster panel'
     },
     {
@@ -148,16 +132,14 @@ export class ProductsService {
       image: 'assets/Iphone14Pro-Max.jpg',
       title: 'iPhone 14 Pro-Max',
       price: 55999,
-      quantity: 1,
       description: 'The iPhone 14 Pro Max display has rounded corners that follow a beautiful curved design, and these corners are within a standard rectangle.'
     },
     {
       id: 17,
       categoria: 'iphone',
       image: 'assets/iPhone-15.jpg',
-      title: 'iPhone 15',
+      title: 'iPhone 15 ',
       price: 42200,
-      quantity: 1,
       description: 'Renders of the 6.7-inch iPhone 15 Plus suggest that it will feature some minor design updates compared to the iPhone 14 Plus, including the Dynamic Island, slimmer bezels, and slight tweaks to the size and thickness of the device. '
     },
   ]
@@ -178,20 +160,21 @@ export class ProductsService {
     }
   ]
 
-
-  
-
+  // constructor(private http:HttpClient) { }
   getProducts() {
     return this.products;    
   }
 
-  getAllProducts() {  
+  getAllProducts() {
+    // return this.http.get('https://fakestoreapi.com/products')
     return this.products;
   }
 
   getProductById(id: number) {
     return this.products.find(product => product.id === id);
   }
+
+
 
 
 // ____Filter By Category____
@@ -222,21 +205,15 @@ private itemCount: number = 0;
     this.itemCountUpdated.emit(this.itemCount);
   }
 
-
-  // getProductById(id: number) {
-  //   return this.categories.find(option => option.id === id); 
-  // }
-
-
-  // *************ZA-start***********
-  
-  prodLength:number = 0 // нужня для того чтоб узнать количевство массива, что бы при добавления в локал id был на 1 больше
-
-  quantity:number = 1
-  categoria:string = "telephone" // на первое время будет эта категория, потом в форму надо добавить
-  addPhonesFromAdmin(phoneImg:any,phoneCategori:string,phoneName:any,phonePrice:any, phoneInfo:any,quantity:number){
+  // id:number = 0
+  prodLength:number = 0
+  prodId:number = 0;
+  addPhonesFromAdmin(phoneImg:any,phoneName:any,phonePrice:any){
+    // console.log(this.products);
     this.prodLength = this.products.length
-    this.products.push({id:this.prodLength+1,categoria:phoneCategori,image:phoneImg,title:phoneName,price:phonePrice, quantity:quantity, description:phoneInfo})
+    // console.log(this.products[this.prodLength-1].id);
+    this.prodId = this.products[this.prodLength-1].id
+    this.products.push({id:this.prodId+1,image:phoneImg,title:phoneName,price:phonePrice})
   }
 
   deleteProduct(id:number){

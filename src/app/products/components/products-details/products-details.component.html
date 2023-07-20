@@ -1,74 +1,36 @@
-<!-- <p>products-details works!</p> -->
-<div class="container" >
-
-
-<button class="btn bg-dark text-white mt-2 " (click)="back()"> Повернутися назад </button>
-
-<div class="d-flex" routerLink="/details/:id" >
+<button class="btn bg-dark text-white mt-2" (click)="back()">Повернутися назад</button>
+<div class="d-flex">
     <div class="mt-5">
-        <img style="height: 200px;width: auto;" src="{{ image }}" alt="">
+        <img style="height: 200px;width: auto;" src="{{image}}" alt="">
     </div>
     <div class="ml-3" style="margin-left: 100px;">
-        <div class="mt-3" style="font-size: 28px;">{{ title }} </div>
-        <div class="mt-3" style="font-size: 18px;">{{ description }}</div>
-        <div class="mt-3" style="font-size: 32px;">  ₴ {{ price }} </div>
-        <div class="d-flex" style="margin-top: 40px;"> 
-           <button class="btn btn-succes bg-dark text-white p-2 border-0 w-25 rounded" 
-                (click)="addToCart($event)"> 
-                    У кошик 
-            </button>
-        </div>
-    </div>
-</div>
- 
-<hr>
-
-<h3>Comments</h3>
-<ul>
-  <li *ngFor="let comment of comments">
-    <strong>{{ comment.name }}:</strong> {{ comment.text }}
-  </li>
-</ul>
-
-<form (submit)="addComment()">
-  <label for="commentName">Name:</label>
-  <input id="commentName" type="text" [(ngModel)]="newComment.name" required />
-
-  <label for="commentText">Comment:</label>
-  <input id="commentText" type="text" [(ngModel)]="newComment.text" required />
-
-  <button type="submit" (submit)="addComment()">Add Comment</button>
-</form>
-
-</div>
-            
-            
-            <!-- <div style="margin-left: 30px;"> -->
-                <!-- <select class="btn btn-dark border-0 rounded" 
-                    name="currency" id="currency" 
-                    [(value)]="currency" 
-                    (change)="onSelectChange()">
-                        <option value="$ ">$ </option> 
-                        <option value="₴ ">₴ </option>
-                </select>  -->
-
-                <!-- <div class="main__container-card-priceNew card-text mb-2" 
-                    style="margin-right: 10px; color: black;font-weight: 600;">
-                   
-                </div>
+        <div class="mt-3" style="font-size: 28px;">{{title}}</div>
+        <div class="mt-3" style="font-size: 18px;">{{description}}</div>
+        <div class="mt-3" style="font-size: 32px;">{{currency}}{{priceCount}}</div>
+        <div class="d-flex" style="margin-top: 40px;">
+            <button class="btn btn-succes bg-dark text-white p-2 border-0 w-25 rounded" (click)="add()"> У кошик </button>
+            <!-- <div class="" style="margin-left: 30px;width: 150px;"> -->
+                <!-- <button class="rounded btn btn-dark" (click)="increment()">+</button><span class="py-2 px-3 mx-1 rounded" style="position: relative; top: 2px; border: 1px solid rgb(33, 37, 41);"> {{count}} </span><button class="rounded btn btn-dark" (click)="decrement()">-</button> -->
+            <!-- </div> -->
+            <div style="margin-left: 30px;">
+                <select class="btn btn-dark border-0 rounded" name="currency" id="currency" [(value)]="currency" (change)="onSelectChange()">
+                    <option value="$ ">$ </option>
+                    <option value="₴ ">₴ </option>
+                </select>
             </div>
         </div>
     </div>
-</div> -->
-
-
-<!-- <div style="margin-top: 100px;">
+</div>
+<div style="margin-top: 100px;">
     <div class="text-start" style="font-size: 26px;">Залишити коментар</div>
     <div class="form-floating mb-3 mt-4">
         <input type="text" class="form-control" id="floatingInputDisabled"/>
         <label for="floatingInputDisabled">Ім'я</label>
     </div>
-   
+    <!-- <div class="form-floating mb-3">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextareaDisabled"></textarea>
+        <label for="floatingTextareaDisabled">Comments</label>
+    </div> -->
     <div class="form-floating mb-3">
         <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2Disabled" style="height: 100px"></textarea>
         <label for="floatingTextarea2Disabled">Коментар</label>
@@ -78,8 +40,9 @@
 <div>
     <div class="text-start" style="font-size: 26px;">Коментарі :</div>
     <div>
-        
+        <!-- {{comName}} -->
     </div>
-</div> 
-</div> -->
+</div>
 
+<!-- <input type="text" id="comment" name="comment" [(ngModel)]="comment" (input)="processComment()"> -->
+    <!-- <div>{{ comName }}</div> -->

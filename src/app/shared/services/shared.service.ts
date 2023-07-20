@@ -3,10 +3,9 @@ import { EventEmitter, Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-
 export class SharedService {
-  itemCount: number = 0;
 
+  private itemCount: number = 0;
   itemCountUpdated: EventEmitter<number> = new EventEmitter<number>();
 
   getItemCount() {
@@ -17,8 +16,4 @@ export class SharedService {
     this.itemCount = count;
     this.itemCountUpdated.emit(this.itemCount);
   }
-  
-
-
 }
-

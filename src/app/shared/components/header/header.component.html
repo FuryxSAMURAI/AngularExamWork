@@ -1,48 +1,60 @@
 <!-- <p>header works!</p> -->
-<header>
-    <nav>
-        <div class="container xs-block">
-            <div class="content">
-                <h2 class="logo" routerLink="/products" style="cursor: pointer;">phonelab</h2>
-            <ul class="d-none d-sx-none d-sm-none d-md-flex d-lg-flex">
-                <li routerLink="/products"> Товари </li>
-                <li class="mx-3" routerLink="/admin"> Адмін </li>  
-                <!-- <li routerLink="/carts" class="cart_icon" >
-                    <i class="fa-solid fa-cart-shopping" (click)="goToCart()"></i> 
-                    <div class="countIcon"> 
-                        <p>{{ cartProducts.length }} </p>
-                    </div>
-                </li>                -->
+
+<nav>
+    <div class="container">
+        <div class="content">
+            <h2 class="logo">phonelab</h2>
+                <!-- hUl - header ul -->
+            <ul class="hUl"> 
+                <li class="mx-3" routerLink="/products"> Товари </li>
+                <li class="mx-3" routerLink="/admin"> Admin </li>
+                <li class="mx-3" routerLink="/carts" ><div class="fa-solid fa-cart-shopping d-flex" (click)="goToCart()">Кошик <span class="mx-2">{{ cartCount }}</span></div> </li>
             </ul>
-            <div class="d-flex justify-content-end">
-                <div routerLink="/carts" class="cart_icon" >
-                    <i class="fa-solid fa-cart-shopping" (click)="goToCart()"></i> 
-                    <div class="countIcon d-flex justify-content-center align-items-center mt-2"> 
-                        <span>{{ cartProducts.length }} </span>                                      
-                    </div>
-                </div>
-                <div style="margin-left: 40px;" class="d-lg-none d-md-none d-block d-sm-block d-sm-block container-fluid navbar-dark">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+            <div class="hamburger-menu">
+                <input id="menu__toggle" type="checkbox" />
+                <label class="menu__btn" for="menu__toggle">
+                  <span></span>
+                </label>
+            
+                <ul class="menu__box">
+                  <li><a class="menu__item" href="#">Главная</a></li>
+                        <li><a class="menu__item" href="#">Проекты</a></li>
+                        <li><a class="menu__item" href="#">Команда</a></li>
+                        <li><a class="menu__item" href="#">Блог</a></li>
+                        <li><a class="menu__item" href="#">Контакты</a></li>
+                </ul>
+              </div>
+            <div class="burger-menu">
+                <input type="checkbox" name="openMenu" id="openMenu">
+                <label for="openMenu">
+                    <span></span>
+                </label>
+                <div class="burger-menu-content">
+                    <ul>
+                        <li class="mx-3" routerLink="/products"> Товари </li>
+                        <li class="mx-3" routerLink="/admin"> Admin </li>
+                        <li class="mx-3" routerLink="/carts" ><div class="fa-solid fa-cart-shopping d-flex" (click)="goToCart()">Кошик <span class="mx-2">{{ cartCount }}</span></div> </li>
+                    </ul>
                 </div>
             </div>
         </div>
+        
     </div>
-    <!-- MENU -->
-    <div class="collapse d-md-none d-lg-none" id="navbarToggleExternalContent">
-        <div style="background-color: white;" class="p-4 d-flex justify-content-center text-center">
-            <ul class="d-block" style="margin: 0 40px 0 0;">
-                <li style="color:  black; margin-left: -10px" routerLink="/products"> Товари </li>
-                <li style="color:  black;margin-top: 20px;" routerLink="/admin"> Адмін </li>  
-                <!-- <li routerLink="/carts" class="cart_icon" >
-                    <i class="fa-solid fa-cart-shopping" (click)="goToCart()"></i> 
-                    <div class="countIcon"> 
-                        <p>{{ cartProducts.length }} </p>
-                    </div>
-                </li>                -->
-            </ul>
+</nav>
+
+<!-- <nav class="w-100 d-flex justify-content-center fixed-top" style="background-color:white;height: 50px;">
+    <div class="w-75 d-flex align-items-center content">
+        <div class="text-uppercase fs-4" style="font-weight:bold;">phonelab</div>
+        <div class="d-flex justify-content-center w-100">
+            <a class="nav-link" routerLink="/products">Головна</a>
+            <a class="nav-link" routerLink="/" style="margin-left: 10px;">Товари</a>
+        </div>
+        <div class="d-flex justify-content-end align-items-center" routerLink="/carts">
+            <div style="margin-right: 20px;">
+                Кошик
+            </div>
+            <input class="form-control me-2" type="search" style="width: 200px;" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-primary" type="submit">Search</button>
         </div>
     </div>
-    </nav>
-</header>
+</nav> -->
