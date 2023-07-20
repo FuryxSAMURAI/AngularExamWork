@@ -1,8 +1,19 @@
 <div class="item" >
-    <div routerLink="/details/:id" (click)="goToProductDetails(data.id)">         
+
+    <app-loader *ngIf="isLoading"></app-loader>
+
+
+    <!-- <div routerLink="/details/:id"  -->
+    <div [routerLink]="['/details', data.id]" 
+        [queryParams]="{ selectedCurrency: selectedCurrency }"          
+        (click)="goToProductDetails(data.id)"
+        >         
     
         <div class="d-flex justify-content-center mt-2">
-            <img class="card-img-top" src="{{data.image}}" style="height: 150px;width: auto;" alt="">
+            <img 
+                class="card-img-top" 
+                src="{{data.image}} " 
+                style="height: 150px; width: auto;" alt="">
         </div>
         
         <div class="body_cards">
@@ -16,10 +27,14 @@
     </div>
 
 
-    <div class="px-3 mb-2 ">
+    <div class="px-3 mb-2 ">    
+
+
         <div class="main__container-card-priceNew card-text mb-2" 
             style="margin-right: 10px; color: black;font-weight: 600;">
-            <span> ₴ {{data.price}} </span>
+            <!-- <span> ₴ {{data.price}} </span> -->
+            <span> {{ selectedCurrency }} {{ convertPrice(data.price) | number:'1.2-2' }} </span>
+            <!-- <span> {{ selectedCurrency }} {{ data.convertedPrice | number:'1.2-2' }} </span> -->
         </div>    
 
         <div>
@@ -30,5 +45,13 @@
             </button>
         </div>
     </div>
+  
+
+    
+
+
+    
+    
 
 </div>
+

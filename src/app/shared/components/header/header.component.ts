@@ -1,37 +1,73 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
-import { getLocaleMonthNames } from '@angular/common';
 import { CartsService } from 'src/app/carts/services/carts.service';
+import { ThemeService } from 'src/app/theme.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit{
-  itemCount: number = 0;
+export class HeaderComponent implements OnInit{ 
+  cartProducts: any[] = [];
+  cartProductsLength: number = 0; 
+  
+  @ViewChild('iconButton') iconButton!: ElementRef;
 
-  constructor(private router: Router, private sharedService: SharedService, private cartService:CartsService) { }
+  constructor(
+    private router: Router,     
+    private cartsService: CartsService, 
+    private themeService: ThemeService 
+  ) {}
 
-  ngOnInit() {
-    this.itemCount = this.sharedService.getItemCount();
-    this.sharedService.itemCountUpdated.subscribe((count: number) => {
-      this.itemCount = count;
-    });
-    console.log(this.cartCount);
-    
-    console.log(this.cartService.getLength());
-    console.log(this.cartCount);
+
+  goToCart() {
+    this.router.navigate(['/carts']);    
+  }
+ 
+
+// ************
+  total:any = 0;
+
+  ngOnInit(): void {
+    this.getCartProducts();
   }
 
-  
-  cartCount:number = JSON.parse(localStorage.getItem("cartcount")!)
-  
-  // this.cartService.getCartProducts().length
-  // 
-  goToCart() {
-    this.router.navigate(['/carts']);
+  getCartProducts(){
+    if("cart" in localStorage){
+      this.cartProducts = JSON.parse(localStorage.getItem("cart")!);      
+   }     
+  }
+ 
+
+
+  // toggleTheme(): void {
+  //   console.log('Toggle theme clicked'); // Проверьте, выводится ли это сообщение в консоль
+  //   this.themeService.toggleTheme();
+  // } 
+
+  isDarkThemeEnabled(): boolean {
+    return this.themeService.isDarkThemeEnabled();
+  }
+
+
+
+  toggleTheme(): void {
+    this.themeService.toggleTheme();
+    this.clearIcons();
+    this.setThemeIcon();
+  }
+
+  private clearIcons(): void {
+    this.iconButton.nativeElement.innerHTML = '';
+  }
+
+  private setThemeIcon(): void {
+    const iconClass = this.themeService.isDarkThemeEnabled() ? 'fas fa-sun' : 'fas fa-moon';
+    const iconElement = document.createElement('i');
+    iconElement.className = iconClass;
+    this.iconButton.nativeElement.appendChild(iconElement);
   }
 
 }

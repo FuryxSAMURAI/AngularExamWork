@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ThemeService } from './theme.service';
+
 
 @Component({
   selector: 'app-root',
@@ -7,16 +9,25 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Angular_Exam';
+  // constructor(private themeService: ThemeService) { }
 
-  // itemCount: number = 0;
-
-  // updateItemCount() {
-  //   this.itemCount++;
+  // toggleTheme(): void {
+  //   this.themeService.toggleTheme();
   // }
 
-  // constructor(private router: Router) {}
-
-  // goToCart() {
-  //   this.router.navigate(['/cart']); // Здесь '/cart' - путь к компоненту корзины
+  // isDarkThemeEnabled(): boolean {
+  //   return this.themeService.isDarkThemeEnabled();
   // }
+
+  constructor(private themeService: ThemeService) { }
+
+  toggleTheme(): void {
+    this.themeService.toggleTheme();
+  }
+
+  isDarkThemeEnabled(): boolean {
+    return this.themeService.isDarkThemeEnabled();
+  }
+
+
 }

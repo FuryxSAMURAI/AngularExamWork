@@ -1,10 +1,12 @@
 <!-- <p>all-products works!</p> -->
 
-<!-- <main class="box mt-5 "> -->
-<main class="container d-flex justify-content-center dblocks mt-5"> 
-    <!-- <div class="d-flex "> -->
-        <div class=" d-flex justify-content-start w-25">
-            <div class="my-2 w-75">
+<main 
+    class="container xs-block d-xs-block d-sm-block d-md-flex d-lg-flex justify-content-center mt-5"> 
+    
+        <!-- <app-loader *ngIf="isLoading"></app-loader> -->
+    
+        <div class="d-xs-block d-sm-block d-md-flex d-lg-flex justify-content-start w-100 valuta bg-blue">
+            <div class="my-2 w-100">
                 <label for="" class="my-1"> ФІЛЬТР: </label>
                 <select class="form-control mt-2"  
                     [(ngModel)]="selectedFilter" 
@@ -21,54 +23,54 @@
                         placeholder="Пошук товарів"
                         class="form-control mt-2">
             </div>
+
+
+            <div class="my-2 w-100 valuta2" >
+                <p for="" class="my-1"> ВИБІР ВАЛЮТИ: </p>           
+
+                <select class="form-control mt-2"
+                    [(ngModel)]="selectedCurrency" 
+                    (change)="onCurrencyChange(selectedCurrency)">
+                        <option *ngFor="let currency of currencies" [value]="currency">
+                            {{ currency }}
+                        </option>
+                </select>              
+            </div>             
+           
         </div>
 
-        <div class="d-flex justify-content-center w-75">
-            <div class="row w-100  d-flex justify-content-around row-cols-5" >  
+        
+
+        <!-- <div class="d-flex justify-content-center w-75"> -->
+            <div class="row xs-blocks d-sm-flex justify-content-start d-md-flex d-lg-flex justify-md-end" >  
 
                 <!-- CARDS -->
                 <!-- <div> -->
-                    <div class="col-md-3 col-sm-12" style="width: 250px;" *ngFor="let item of filteredItems let card of filteredItems; let productId = index">
-                        <div class="item">
-                                <!-- routerLink="/aboutPhones" -->
-                                <div (click)="goToProductDetails(productId+1)">
-                                    <div class="d-flex justify-content-center mt-2">
-                                        <img class="card-img-top" src="{{item.image}}" style="height: 150px;width: auto;" alt="">
-                                    </div>
-                                    
-                                    <div class="body_cards">
-                                        <h4 class="main__container-card-info card-title" style="height: 60px;font-size: 14px;">{{item.title}}</h4>
-                                        <!-- <p>{{item.description}}</p> -->
-                                    </div>
-                                </div>
-                                    <div class="px-3 mb-2 ">
-                                        <div class="main__container-card-priceNew card-text mb-2" style="margin-right: 10px; color: black;font-weight: 600;">
-                                            <span> ₴ {{item.price}}</span>
-                                        </div>
-                                        <button class="btn btn-succes bg-dark text-white p-2 w-100 border-0 rounded" (click)="pushProduct(productId+1)" (click)="addCartProduct(item.title,item.price)"> У кошик </button>
-                                    </div>
-                        </div>
+                    <div style="width: 250px;" 
+                            *ngFor="let item of filteredItems,
+                            let card of filteredItems; 
+                            let productId = index,
+                            let product of productService.getAllProducts()"
+                           
+                            >
+
+                        <app-product 
+                            [data]="item" 
+                            [selectedCurrency]="selectedCurrency"
+                            (item)="addToCart($event)"> 
+                        </app-product> 
+                        
+
                     </div>
+
                 <!-- </div> -->
-        
-               
-        
-               
             </div>
-
-        </div>
-
-    <!-- </div> -->
-
-
-
-   
+        <!-- </div>   -->
 </main>
 
 
-<!-- <div class="text-center w-100" *ngIf="">
-    <app-spinner></app-spinner>
-</div> -->
+
+
 
 
 

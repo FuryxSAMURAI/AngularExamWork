@@ -1,82 +1,65 @@
-<div class="d-flex mt-5">
-    <form style="border: 1px solid black; width: 400px; padding: 20px 30px; border-radius: 5px;">
-        <p class="text-center" style="font-size: 26px;">Форма для заповнення</p>
-        <div class="mt-3">
-            <label for="phoneImg">Картинка товару</label>
-            <input class="d-flex" style="width: 100%; height: 40px; padding-left: 5px; font-size:18px" placeholder="URL картинки" on-change="checkImage()" type="text" name="phoneImg" #imgReq="ngModel" pattern="^(http|https):\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,}(\/\S*)?$" required [(ngModel)]="phoneImg" id="phoneImg">
-            <div *ngIf="imageLoadError">Вибачте, але картинка не Завантажилася</div>
-            <!-- <span [hidden]="imgReq.valid || imgReq.untouched" style="color: red;">Вибачте але щось пішло не так</span> -->
-        </div>
-        <div class="mt-3">
-            <label for="phoneName">Назва товару</label>
-            <input class="d-flex" style="width: 100%; height: 40px; padding-left: 5px; font-size:18px" type="text" name="phoneName" #nameReq="ngModel" pattern="^[a-zA-Z0-9\s/]+$" required [(ngModel)]="phoneName" id="phoneName">
-            <span [hidden]="nameReq.valid || nameReq.untouched" style="color: red;">Тільки букви та пробіли та знак /</span>
-        </div>
-        <div class="mt-3">
-            <label for="phoneInfo">Опис товару</label>
-            <input class="d-flex" style="width: 100%; height: 40px; padding-left: 5px; font-size:18px" type="text" name="phoneInfo" #infoReq="ngModel" pattern="^[а-яa-zA-ZА-ЯіІ0-9\s]+$" [(ngModel)]="phoneInfo" required id="phoneInfo">
-            <span [hidden]="infoReq.valid || infoReq.untouched" style="color: red;">Тільки букви, цифри та пробіл</span>
-        </div>
-        <div class="mt-3">
-            <label for="phonePrice">Ціна товару</label>
-            <input class="d-flex" style="width: 100%; height: 40px; padding-left: 5px; font-size:18px" type="text" name="phonePrice" #priceReq="ngModel" pattern="^\d+$" [(ngModel)]="phonePrice" required id="phonePrice">
-            <span [hidden]="priceReq.valid || priceReq.untouched" style="color: red;">Тільки цифри</span>
-        </div>
-        <div class="mt-4 d-flex justify-content-center">
-            <!-- <button on-click="test(imgReq, nameReq, priceReq, infoReq)">test</button> -->
-            <button class="btn bg-dark text-white mx-3 rounded" style="height: 50px;" type="submit" on-click="pushPhones()" [disabled]="nameReq.invalid || priceReq.invalid || infoReq.invalid || imageLoadError">Додати</button>
-            <button class="btn bg-dark text-white mx-3 rounded" style="height: 50px;" on-click="getPhones()" [disabled]="nameReq.invalid || priceReq.invalid || infoReq.invalid || imageLoadError">Показати</button>
-            <button class="btn bg-dark text-white mx-3 rounded" style="height: 50px;" on-click="removeAllPhones()">Очистить</button>
-        </div>
-        <!-- <button (click)="saveDataToLocalStorage()">Test local Storage</button> -->
-        <!-- <button (click)="getDataFromLocalStorage(key)">Get tested local Storage</button> -->
-    </form>
-    <div style="position: relative;left: 200px;" class="d-flex">
+<!-- <p>admin works!</p> -->
+<div class="container d-flex d-767-block xs-block">
 
-        <div class="d-flex justify-content-center container">
-            <div class="gblocks" >
-                <div class="bg-white" *ngFor="let phone of phones" style="width: 250px;height: 370px; border: 1px solid black;">
-                    <div class="d-flex justify-content-center" style="margin: 20px 0;">
-                        <img class="card-img-top" src="{{phone.img}}" style="height: 150px;width: auto;" alt="">
-                    </div>
-                    <div class="body_cards" style="margin-left: 20px;">
-                        <h4 class="main__container-card-info card-title">{{phone.name}}</h4>
-                        <p class="card-info">{{phone.info}}</p>
-                    </div>
-                    <div style="margin: 0 20px 0 20px; padding: 10px 0;">
-                    <div class="main__container-card-priceNew card-text mb-2" style="margin-right: 10px; color: black;font-weight: 600;">
-                        <span style="font-size: 24px;"> ₴ {{phone.price}} </span>
-                    </div>
-                    <button (click)="testId()" class="btn btn-succes bg-dark text-white p-2 w-100 border-0 rounded"> 
-                        У кошик 
-                    </button>
-                    </div>
-                </div>
+    <app-loader *ngIf="isLoading"></app-loader>
+
+    <div class="d-flex mt-5 h-50 justify-content-center">
+
+        <form style="border: 1px solid rgb(241, 241, 241); width: 400px; padding: 20px 30px; border-radius: 5px;">
+            <p class="text-center" style="font-size: 26px;"> Форма для заповнення </p>
+            <div class="inutBlock mt-3">
+                <label for="phoneImg" > Картинка товару </label>
+                <input class="d-flex" 
+                    style="width: 100%; height: 40px; padding-left: 5px; font-size:18px" 
+                    placeholder="URL картинки" on-change="checkImage()" type="text" name="phoneImg" #imgReq="ngModel" pattern="^(http|https):\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,}(\/\S*)?$" 
+                    required 
+                    [(ngModel)]="phoneImg" 
+                    id="phoneImg">
+                    <div *ngIf="imageLoadError">
+                        Вибачте, але картинка не Завантажилася
+                    </div>                
             </div>
 
-         </div>
+            <div class="inutBlock mt-3">
+                <label for="phoneName"> Назва товару </label>
+                <input class="d-flex" style="width: 100%; height: 40px; padding-left: 5px; font-size:18px" type="text" name="phoneName" #nameReq="ngModel" pattern="^[a-zA-Z0-9\s/]+$" required [(ngModel)]="phoneName" id="phoneName">
+                <span [hidden]="nameReq.valid || nameReq.untouched" style="color: red;"> Тільки букви та пробіли та знак /</span>
+            </div>
 
-    </div>
-</div>
-<div class="mt-4" style="font-size: 26px;" >
-    <div>Доступні товари :</div>
-    <table style="width:100%">
-        <tr>
-          <th style="font-size: 24px; font-weight: 500;">Картинка</th>
-          <th style="font-size: 24px; font-weight: 500;">Назва</th>
-          <th style="font-size: 24px; font-weight: 500;">Ціна</th>
-          <th style="font-size: 24px; font-weight: 500;">Видалити</th>
-        </tr>
-        <tr *ngFor="let product of availableProducts let id = index">
-          <td class="d-flex justify-content-center"><img src="{{product.image}}" style="height: 100px;width: auto;" alt=""></td>
-          <td>{{product.title}}</td>
-          <td>{{product.price}}</td>
-          <td><button (click)="deleteProduct(id)" class="btn bg-dark text-white w-100">delete</button></td>
-        </tr>
-        <!-- <tr>
-          <td>Centro comercial Moctezuma</td>
-          <td>Francisco Chang</td>
-          <td>Mexico</td>
-        </tr> -->
-      </table>
+            <div class="inutBlock mt-3">
+                <label for="phoneInfo">Опис товару</label>
+                <input class="d-flex" style="width: 100%; height: 40px; padding-left: 5px; font-size:18px" type="text" name="phoneInfo" #infoReq="ngModel" pattern="^[а-яa-zA-ZА-ЯіІ0-9\s]+$" [(ngModel)]="phoneInfo" required id="phoneInfo">
+                <span [hidden]="infoReq.valid || infoReq.untouched" style="color: red;">Тільки букви, цифри та пробіл</span>
+            </div>
+            <div class=" inutBlock mt-3">
+                <label for="phonePrice">Ціна товару</label>
+                <input class="d-flex" style="width: 100%; height: 40px; padding-left: 5px; font-size:18px" type="text" name="phonePrice" #priceReq="ngModel" pattern="^\d+$" [(ngModel)]="phonePrice" required id="phonePrice">
+                <span [hidden]="priceReq.valid || priceReq.untouched" style="color: red;">Тільки цифри</span>
+            </div>
+
+            <div class="mt-4 d-flex justify-content-center">
+                <button 
+                    class="btn bg-dark text-white mx-3 rounded p-0" 
+                    style="height: 50px; width: 100%;" type="submit" 
+                    on-click="pushPhones()" 
+                    [disabled]="nameReq.invalid || priceReq.invalid || infoReq.invalid || imageLoadError">
+                        Додати
+                </button>                
+            </div>            
+        </form>
+    </div>  
+
+    <div class="mx-3 mt-5 row d-flex j-767-center">
+        <div class="mb-3" style="font-size: 26px;"> Доступні / Додані товари :</div>
+        <div 
+            class="item" 
+            *ngFor="let product of availableProducts let id = index">
+                <img src="{{product.image}}" style="height: 100px;width: auto;">
+                <p style="text-align: center; font-size: 14px; width: 100%; height: 50px;padding-top: 10px;">{{product.title}}</p>
+                <p>₴ {{product.price}}</p>
+                <button (click)="deleteProduct(id)" class="btn bg-dark text-white w-100">
+                    Видалити
+                </button>
+        </div> 
+    </div> 
 </div>

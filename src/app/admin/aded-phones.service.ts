@@ -1,22 +1,45 @@
-import { Injectable } from '@angular/core';
-
+import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdedPhonesService {
+export class AdedPhonesService {  
+  availableProducts: any[] = [];
+  adminProduct: any[] = [];
 
   constructor() { }
 
+  ngOnInit(): void {
+    this.getAdminProducts()     
+  }
+
+ getAdminProducts(){
+   if("addedProducts" in localStorage){
+     this.adminProduct = JSON.parse(localStorage.getItem("addedProducts")!);      
+  }   
+ //  console.log(this.adminProduct) 
+   
+ }
+
   phones:any[] = []
   
-  addPhones(phoneImg:any, phoneName:any, phonePrice:any, phoneInfo:any){
-    this.phones.push({name:phoneName,img:phoneImg, price:phonePrice,info:phoneInfo})
+  addProduct(
+    phoneImg: any, 
+    phoneName: any, 
+    phonePrice: any, 
+    phoneInfo: any){
+    this.adminProduct.push({
+      name: phoneName,
+      img: phoneImg,  
+      price: phonePrice,
+      info: phoneInfo})
   }
-  getPhones(){
-    return this.phones;
+
+  getProducts(){
+    return this.adminProduct;
   }
   deleteArr(){
-    this.phones.splice(0, this.phones.length)
+    this.adminProduct.splice(0, this.adminProduct.length)
   }
+  
 }

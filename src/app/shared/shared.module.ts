@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './components/footer/footer.component';
-import { SpinnerComponent } from './components/spinner/spinner.component';
 
 
 
@@ -13,7 +12,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
   declarations: [
     HeaderComponent,
     FooterComponent,
-    SpinnerComponent
+    
   ],
   imports: [
     CommonModule,
@@ -24,9 +23,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
   ],
   exports:[
     HeaderComponent,
-    FooterComponent,
-    SpinnerComponent
-    
+    FooterComponent,    
   ]
 })
 export class SharedModule { }

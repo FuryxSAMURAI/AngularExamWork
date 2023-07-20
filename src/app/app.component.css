@@ -1,0 +1,17 @@
+/* Дневная тема */
+body {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  
+  /* Ночная тема */
+body.dark-theme {
+    background-color: #000000;
+    color: #ffffff;
+  }
+
+  
+  
+  
+  
+  
